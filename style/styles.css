@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url(backgrounds/Day.svg);
+    background-image: url(Day.svg);
     background-size: cover;
     min-height: 100vh;
     padding: 2rem;
@@ -19,7 +19,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(backgrounds/Day.svg);
+    background-image: url(Day.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -54,7 +54,7 @@ body::before {
 }
 
 body.dark-mode {
-    background-image: url(backgrounds/background.svg);
+    background-image: url(background.svg);
     background-size: cover;
     background-repeat: no-repeat;
     color: #e0e0e0;
@@ -75,7 +75,7 @@ body.dark-mode::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(backgrounds/background.svg);
+    background-image: url(background.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
