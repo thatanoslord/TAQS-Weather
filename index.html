@@ -85,6 +85,7 @@
 </head>
 
 <body>
+
     <div class="container">
         <div class="header">
             <!-- Profile Picture -->
@@ -116,30 +117,34 @@
                 <button class="btn">Sign Up</button>
                 <hr>
                 <a href="#" class="sidebar-link">Settings</a>
+                <a href="about.html" class="sidebar-link">About Us</a>
                 <a href="#" class="sidebar-link">Privacy Policy</a>
             </div>
         </div>
         <div class="current-weather">
-            <div>
+            <div class="c-weather">
                 <img class="weather-icon" id="current-icon" alt="Weather icon">
-                <div class="temp-main" id="temperature">24°C</div>
-                <div class="feels-like" id="feels-like">Feels like: 22°C</div>
+                <div class="feels-temp">
+                    <div class="temp-main" id="temperature">24°C</div>
+                    <div class="feels-like" id="feels-like">Feels like: 22°C</div>
+                </div>
+
             </div>
             <div class="weather-details" id="weather-details"></div>
         </div>
-    </div>
-
-
-
-    <div class="forecast-section">
-        <div class="forecast-title">5 Days Forecast</div>
-        <div class="five-day-forecast" id="five-day-forecast"></div>
     </div>
 
     <div class="forecast-section">
         <div class="forecast-title">Hourly Forecast</div>
         <div class="hourly-forecast" id="hourly-forecast"></div>
     </div>
+
+    <div class="forecast-section">
+        <div class="forecast-title">5 Days Forecast</div>
+        <div class="five-day-forecast" id="five-day-forecast"></div>
+    </div>
+
+
     </div>
     <footer>
         <div class="footer-container">
@@ -149,13 +154,14 @@
             </div>
             <div class="footer-center">
                 <p id="live-datetime"></p>
-                <button id="unit-toggle">Switch to °F</button>
+
             </div>
             <div class="footer-right">
                 <div class="social-icons">
                     <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>
                     <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
                     <a href="#"><img src="icons/github.svg" alt="GitHub"></a>
+                    <a href="about.html" class="sidebar-link">About Us</a>
                 </div>
                 <button id="back-to-top">⬆ Top</button>
             </div>
@@ -277,7 +283,7 @@
             margin: 0 5px;
         }
 
-        #unit-toggle,
+
         #back-to-top {
             padding: 8px 12px;
             border: none;
@@ -423,7 +429,7 @@
         updateLiveDateTime();
 
         // Temperature Toggle
-        document.getElementById("unit-toggle").addEventListener("click", function () {
+        /*document.getElementById("unit-toggle").addEventListener("click", function () {
             let tempElement = document.getElementById("temperature");
             let currentUnit = this.textContent.includes("°F") ? "C" : "F";
             let newUnit = currentUnit === "C" ? "F" : "C";
@@ -431,7 +437,7 @@
             let newTemp = newUnit === "F" ? (currentTemp * 9 / 5) + 32 : (currentTemp - 32) * 5 / 9;
             tempElement.textContent = `${Math.round(newTemp)}°${newUnit}`;
             this.textContent = `Switch to °${currentUnit}`;
-        });
+        });*/
 
         // Back to Top
         document.getElementById("back-to-top").addEventListener("click", function () {
