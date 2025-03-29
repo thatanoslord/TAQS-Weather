@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url(backgrounds/Day.svg);
+    background-image: url(/backgrounds/Day.svg);
     background-size: cover;
     min-height: 100vh;
     padding: 2rem;
@@ -19,7 +19,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(backgrounds/Day.svg);
+    background-image: url(/backgrounds/Day.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -75,7 +75,7 @@ body.dark-mode::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(backgrounds/background.svg);
+    background-image: url(/backgrounds/background.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -114,6 +114,13 @@ body.dark-mode .search-bar {
 
 }
 
+.feels-temp {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 body.dark-mode .location-time,
 body.dark-mode .current-location,
 body.dark-mode .temp-main,
@@ -144,7 +151,7 @@ body.dark-mode .hour-item {
 }
 
 .time-date {
-    color: #666;
+    color: beige;
     font-size: 0.95rem;
 }
 
@@ -181,8 +188,8 @@ body.dark-mode .hour-item {
 }
 
 .weather-icon {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
 }
 
 .weather-details {
@@ -198,17 +205,22 @@ body.dark-mode .hour-item {
 }
 
 .detail-item div:first-child {
-    color: #666;
+    color: #ea481e;
     font-size: 0.9rem;
     margin-bottom: 0.4rem;
 }
 
 .detail-item div:last-child {
     font-weight: 500;
-    color: #1a1a1a;
+    color: white;
 }
 
 .forecast-section {
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+    margin: 2.5rem 0;
+    border-radius: 20px;
     margin: 2.5rem 0;
 }
 
@@ -331,10 +343,7 @@ body {
     display: none;
 }
 
-.toggle--checkbox:checked {
-    /** This will all flip from sun to moon **/
-    /** Change the label color **/
-}
+.toggle--checkbox:checked {}
 
 .toggle--checkbox:checked~.background {
     background: var(--indigo-background);
