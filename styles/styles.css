@@ -225,7 +225,7 @@ body.dark-mode .hour-item {
 }
 
 .forecast-title {
-    color: #666;
+    color: white;
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 1.2rem;
@@ -240,7 +240,7 @@ body.dark-mode .hour-item {
 }
 
 .forecast-day {
-    background: #f8f9fa;
+    background: #f8f9faa3;
     padding: 1rem;
     border-radius: 12px;
     text-align: center;
@@ -259,7 +259,7 @@ body.dark-mode .hour-item {
 }
 
 .hour-item {
-    background: #f8f9fa;
+    background: #f8f9faa3;
     padding: 1rem;
     border-radius: 12px;
     text-align: center;
@@ -467,6 +467,11 @@ body {
     background: transparent;
     border-radius: 50%;
     opacity: 0;
+}
+
+.openweathermap {
+    text-decoration: none;
+    color: #ea481e;
 }
 
 @keyframes switch {

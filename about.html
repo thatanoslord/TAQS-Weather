@@ -4,42 +4,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About Us | Weather App</title>
     <link rel="stylesheet" href="styles/about.css">
+    <style>
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #1e191c12;
+            padding: 10px;
+            border-radius: 20px;
+
+        }
+
+        .about-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #ea481e;
+        }
+
+        .about-header p {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .about-content {
+            width: 100%;
+            text-align: center;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #1e191c12;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .about-section {
+            margin-bottom: 20px;
+        }
+
+        .about-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .about-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            object-fit: cover;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .contact-info a {
+            color: #1e88e5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #ea481e;
+        }
+
+        .contact-link {
+            color: #ea481e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
-    <header>
-        <h2>Weather App</h2>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="news.html">News</a>
-            <a href="about.html" class="active">About</a>
-        </nav>
-    </header>
+    <div class="container">
+        <div class="header">
+            <button onclick="location.href='index.html'"
+                style="padding: 0.5rem 1rem; border-radius: 20px; border: none; background: #007bff; color: white; cursor: pointer; margin-left: 10px;">
+                Home
+            </button>
 
-    <section class="about-container">
-        <h1>About Us</h1>
-        <img src="profile.jpg" alt="Profile Picture" class="profile-image">
-        <p>We are dedicated to providing real-time, accurate weather forecasts with a user-friendly interface.</p>
+            <button id="dark-mode-toggle"
+                style="padding: 0.5rem 1rem; border-radius: 20px; border: none; background: #ddd; cursor: pointer;">
+                🌙 Dark Mode
+            </button>
 
-        <div class="info-box">
-            <div class="info-card">
-                <h3>Our Mission</h3>
-                <p>Deliver precise and user-friendly weather updates for everyone.</p>
+        </div>
+
+        <!-- About Us Section -->
+        <div class="about-container">
+            <div class="about-header">
+                <h1>About Us</h1>
+                <p>Welcome to TAQS Weather Web-App – your go-to source for up-to-date weather forecasts and real-time
+                    information about cities around the world. Our mission is to provide an easy-to-use platform where
+                    users can quickly access weather data, plan their day with accurate forecasts, and stay informed
+                    about changing weather conditions.
+
+                    Our team is passionate about technology and design, and we’ve built this app to bring powerful
+                    weather data in a clean, interactive, and user-friendly interface. Whether you’re planning a trip,
+                    going for a run, or just curious about the weather in your city, TAQS Weather has you covered.
+
+                    We leverage the latest technologies, including the OpenWeather API, to provide accurate and reliable
+                    weather information. With features like hourly and 5-day forecasts, temperature units customization,
+                    and dark mode support, we aim to make weather tracking a breeze.
+
+                    Thank you for using TAQS Weather Web-App. Stay safe, stay informed, and enjoy the weather!</p>
             </div>
-            <div class="info-card">
-                <h3>Our Team</h3>
-                <p>Developed by [Your Name], a passionate web developer.</p>
+
+            <div class="about-content">
+                <div class="about-section">
+                    <h2>Our Mission</h2>
+                    <p>Our mission is to provide users with a simple and reliable weather app that offers real-time data
+                        and intuitive features. We aim to help you stay informed about the weather, so you can plan your
+                        day better.</p>
+                </div>
+
+                <div class="about-section">
+                    <h2>Who is Our Team</h2>
+                    <p>TAQS Weather Web App is a solo project created and developed by Moussa Sabbar. As the sole
+                        developer behind the app, I focused on providing an intuitive and seamless user experience while
+                        integrating real-time weather data and features. Every line of code, design, and functionality
+                        has been crafted to meet the needs of users who are looking for a reliable and easy-to-use
+                        weather application.</p>
+                </div>
+
+                <div class="about-section">
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions or feedback, feel free to <a class="contact-link"
+                            href="mailto:your-email@example.com">contact us </a>. We'd love to hear from you!</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <footer>
-        <p>© 2025 Weather App. All rights reserved.</p>
-    </footer>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-left">
+                    <p>© 2025 Weather App. All rights reserved.</p>
+                    <p>Weather data from <a class="openweathermap" href="https://openweathermap.org/"
+                            target="_blank">OpenWeather</a></p>
+                </div>
+                <div class="footer-center">
+                    <p id="live-datetime"></p>
 
+                </div><a href="about.html" class="sidebar-link">About Us</a>
+                <div class="footer-right">
+                    <div class="social-icons">
+                        <a href="#"><img src="icons/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="icons/twitter.png" alt="Twitter"></a>
+                        <a href="#"><img src="icons/github.png" alt="GitHub"></a>
+                    </div>
+
+
+                </div>
+            </div>
+        </footer>
+        <style>
+            footer {
+                background: rgba(17, 108, 212, 0.36);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                padding: 15px;
+                text-align: center;
+                color: white;
+                position: relative;
+                width: 100%;
+                bottom: 0;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            }
+
+            .footer-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+
+
+            }
+
+            .footer-left,
+            .footer-center,
+            .footer-right {
+                flex: 1;
+                min-width: 250px;
+                margin: 10px;
+            }
+
+            .social-icons img {
+                width: 24px;
+                margin: 0 5px;
+            }
+
+
+            #back-to-top {
+                padding: 8px 12px;
+                border: none;
+                cursor: pointer;
+                background: rgba(255, 255, 255, 0.3);
+                color: white;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+        </style>
+    </div>
+
+    <script>
+        // Dark Mode
+        document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            document.getElementById('dark-mode-toggle').textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        });
+
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('dark-mode-toggle').textContent = '☀️ Light Mode';
+        }
+
+        // Live Date & Time
+        function updateLiveDateTime() {
+            const now = new Date();
+            document.getElementById("live-datetime").textContent = now.toLocaleString();
+        }
+        setInterval(updateLiveDateTime, 1000);
+        updateLiveDateTime();
+    </script>
 </body>
 
 </html>

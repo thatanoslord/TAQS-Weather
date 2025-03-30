@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+
     <style>
         .dark-mode {
             background-color: #121212;
@@ -88,9 +94,11 @@
 
     <div class="container">
         <div class="header">
+
+
             <!-- Profile Picture -->
             <div class="profile-container">
-                <img src="icons/profile-picture.png" alt="Profile Picture" class="profile-pic" id="profile-pic">
+                <img src="icons/hamburger.png" alt="Profile Picture" class="profile-pic" id="profile-pic">
             </div>
             <form id="search-form">
                 <input type="text" class="search-bar" placeholder="Search for your preferred city..." id="search-input">
@@ -100,7 +108,7 @@
                 🌙 Dark Mode
             </button>
             <div class="location-time">
-                <div class="current-location" id="city">Athens</div>
+                <div class="current-location" id="city">Agadir</div>
                 <div class="time-date" id="datetime">09:03 • Thursday, 31 Aug</div>
             </div>
         </div>
@@ -108,17 +116,16 @@
 
         <!-- Sidebar -->
         <div id="sidebar">
+            <button id="close-sidebar">×</button>
             <div class="sidebar-header">
-                <img src="icons/profile-picture.png" alt="Profile Picture" id="profile-pic">
-                <button id="close-sidebar">×</button>
+                <img src="icons/hamburger.png" alt="Profile Picture" id="profile-pic">
+
             </div>
             <div class="sidebar-content">
-                <button class="btn">Login</button>
-                <button class="btn">Sign Up</button>
                 <hr>
-                <a href="#" class="sidebar-link">Settings</a>
+                <a href="settings.html" class="sidebar-link">Settings</a>
                 <a href="about.html" class="sidebar-link">About Us</a>
-                <a href="#" class="sidebar-link">Privacy Policy</a>
+                <a href="privacy-policy.html" class="sidebar-link">Privacy Policy</a>
             </div>
         </div>
         <div class="current-weather">
@@ -150,21 +157,24 @@
         <div class="footer-container">
             <div class="footer-left">
                 <p>© 2025 Weather App. All rights reserved.</p>
-                <p>Weather data from <a href="https://openweathermap.org/" target="_blank">OpenWeather</a></p>
+                <p>Weather data from <a class="openweathermap" href="https://openweathermap.org/"
+                        target="_blank">OpenWeather</a></p>
             </div>
             <div class="footer-center">
                 <p id="live-datetime"></p>
 
-            </div>
+            </div><a href="about.html" class="sidebar-link">About Us</a>
             <div class="footer-right">
                 <div class="social-icons">
-                    <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>
-                    <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
-                    <a href="#"><img src="icons/github.svg" alt="GitHub"></a>
-                    <a href="about.html" class="sidebar-link">About Us</a>
+                    <a href="https://www.facebook.com/moussa.sabbar.549"><img src="icons/facebook.png"
+                            alt="Facebook"></a>
+                    <a href="https://x.com/MoussaSabbar"><img src="icons/twitter.png" alt="Twitter"></a>
+                    <a href="https://github.com/thatanoslord"><img src="icons/github.png" alt="GitHub"></a>
                 </div>
-                <button id="back-to-top">⬆ Top</button>
+
+
             </div>
+            <button id="back-to-top">⬆ Top</button>
         </div>
     </footer>
     <style>
@@ -195,6 +205,7 @@
             justify-content: space-between;
             width: 100%;
             align-items: center;
+            justify-content: center;
         }
 
         #profile-pic {
@@ -211,6 +222,7 @@
             border: none;
             color: white;
             cursor: pointer;
+            align-self: end;
         }
 
         .sidebar-content {
@@ -266,8 +278,8 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            max-width: 1200px;
-            margin: auto;
+
+
         }
 
         .footer-left,
@@ -311,6 +323,57 @@
             color: #e0e0e0;
         }
     </style>
+    <script>
+        // Firebase Config and Initialization
+        const firebaseConfig = {
+            apiKey: "AIzaSyAK3crk0yDErvNlUNBrTT93G4xrUL28sWs",
+            authDomain: "taqs-weather-web-app.firebaseapp.com",
+            projectId: "taqs-weather-web-app",
+            storageBucket: "taqs-weather-web-app.appspot.com",
+            messagingSenderId: "405436914762",
+            appId: "1:405436914762:web:047015ecbf52a953dd5ab3",
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Firebase Auth State Changed Listener
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is logged in, show the weather app
+                console.log('User is logged in:', user.email);
+                // Show the weather data
+                getWeatherData('Agadir').then(data => updateUI(data)); // This keeps the weather app running
+            } else {
+                // No user is signed in, redirect to login page
+                window.location.href = "login.html"; // Ensure you have a login.html
+            }
+        });
+
+        // Dark Mode Toggle
+        document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            document.getElementById('dark-mode-toggle').textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        });
+
+        // Sidebar Logic (remains unchanged)
+        document.getElementById("profile-pic").addEventListener("click", function () {
+            document.getElementById("sidebar").classList.add("open");
+        });
+
+        document.getElementById("close-sidebar").addEventListener("click", function () {
+            document.getElementById("sidebar").classList.remove("open");
+        });
+
+        // Weather Data and other functions remain unchanged
+
+        // Initial weather data
+        getWeatherData('Agadir').then(data => updateUI(data));
+
+    </script>
 
 
     <script>
@@ -445,6 +508,21 @@
         });
 
     </script>
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in, proceed with the app
+                console.log('User is logged in:', user.email);
+                // Show the weather app or continue with the page content
+            } else {
+                // No user is signed in, redirect to the login page
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+
+
+
 
 </body>
 

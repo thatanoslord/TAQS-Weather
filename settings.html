@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Weather App</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Settings</h1>
+            <a href="index.html" class="openweathermap">Back to Home</a>
+        </header>
+
+        <section class="settings-section">
+            <div class="setting-item">
+                <label for="darkModeToggle">Dark Mode</label>
+                <input type="checkbox" id="darkModeToggle" class="toggle--checkbox">
+                <label for="darkModeToggle" class="toggle--label">
+                    <div class="toggle--label-background"></div>
+                </label>
+            </div>
+
+            <div class="setting-item">
+                <label for="temperatureUnit">Temperature Unit</label>
+                <select id="temperatureUnit" class="search-bar">
+                    <option value="metric">Celsius</option>
+                    <option value="imperial">Fahrenheit</option>
+                    <option value="standard">Kelvin</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label for="defaultCity">Default City</label>
+                <input type="text" id="defaultCity" class="search-bar" placeholder="Enter city name">
+            </div>
+
+            <div class="setting-item">
+                <button id="saveSettings" class="search-bar">Save Settings</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // JavaScript to handle saving and applying settings
+        document.getElementById('saveSettings').addEventListener('click', () => {
+            const isDarkMode = document.getElementById('darkModeToggle').checked;
+            const temperatureUnit = document.getElementById('temperatureUnit').value;
+            const defaultCity = document.getElementById('defaultCity').value;
+
+            // Save settings to local storage
+            localStorage.setItem('darkMode', isDarkMode);
+            localStorage.setItem('temperatureUnit', temperatureUnit);
+            localStorage.setItem('defaultCity', defaultCity);
+
+            alert('Settings saved!');
+        });
+
+        // Load saved settings on page load
+        window.addEventListener('load', () => {
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            const savedTemperatureUnit = localStorage.getItem('temperatureUnit') || 'metric';
+            const savedDefaultCity = localStorage.getItem('defaultCity') || '';
+
+            document.getElementById('darkModeToggle').checked = savedDarkMode;
+            document.getElementById('temperatureUnit').value = savedTemperatureUnit;
+            document.getElementById('defaultCity').value = savedDefaultCity;
+
+            if (savedDarkMode) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        });
+
+        // Listen for changes on the dark mode toggle and apply it immediately
+        document.getElementById('darkModeToggle').addEventListener('change', (event) => {
+            const isDarkMode = event.target.checked;
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
