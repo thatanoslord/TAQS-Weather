@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TAQS Weather App</title>
+    <meta name="description" content="Check the weather in any city with TAQS Weather App" />
+    <meta name="author" content="Lovable" />
+
+    <meta property="og:title" content="TAQS Weather App" />
+    <meta property="og:description" content="Check the weather in any city with TAQS Weather App" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image"
+        content="https://storage.googleapis.com/gpt-engineer-screenshots/id-preview-1eb3e658--05f72b3a-429a-478a-8099-e2e11eec8eaf.lovable.app-1743297635251.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image"
+        content="https://storage.googleapis.com/gpt-engineer-screenshots/id-preview-1eb3e658--05f72b3a-429a-478a-8099-e2e11eec8eaf.lovable.app-1743297635251.png" />
+    <script type="module" crossorigin src="/assets/index-CntyLVua.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-zxqRyGX8.css">
+
+    <style>
+        #lovable-badge {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 141px;
+            padding: 5px 13px;
+            background-color: #000;
+            color: #fff;
+            font-size: 12px;
+            border-radius: 5px;
+            font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            z-index: 1000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+
+
+    <script>
+        // Don't show the lovable-badge if the page is in an iframe or if it's being rendered by puppeteer (screenshot service)
+        if (navigator.userAgent.includes('puppeteer')) {
+            // the page is in an iframe
+            var badge = document.getElementById('lovable-badge');
+            if (badge) {
+                badge.style.display = 'none';
+            }
+        }
+
+        // Add click event listener to close button
+        var closeButton = document.getElementById('lovable-badge-close');
+        if (closeButton) {
+            closeButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                var badge = document.getElementById('lovable-badge');
+                if (badge) {
+                    badge.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon='{"rayId":"9283d386ca2e663b","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.1.0","token":"dc79be98a7d9454985898a9490bd0402"}'
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

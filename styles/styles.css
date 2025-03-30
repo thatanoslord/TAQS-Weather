@@ -6,6 +6,7 @@
 }
 
 body {
+    background-color: rgb(15 88 171 / 18%);
     background-image: url(/backgrounds/Day.svg);
     background-size: cover;
     min-height: 100vh;

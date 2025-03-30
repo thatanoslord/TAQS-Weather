@@ -1,0 +1,233 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background-image: url(/backgrounds/Day.svg);
+    background-size: cover;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/backgrounds/Day.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+/* Container Styling */
+.container {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(17, 108, 212, 0.36);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.openweathermap {
+    color: #ea481e;
+    text-decoration: none;
+}
+
+/* Settings Section Styling */
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.setting-item {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.setting-item label {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+/* Search Bar & Select Styling */
+.search-bar {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-bar:focus {
+    border-color: #ea481e;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-image: url(/backgrounds/background.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+body.dark-mode::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/backgrounds/background.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+body.dark-mode .container {
+    background: #2b2b2b48;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .search-bar {
+    background: #3a3a3a65;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+body.dark-mode .setting-item label {
+    color: #e0e0e0;
+}
+
+/* Toggle Switch */
+.toggle--checkbox {
+    display: none;
+}
+
+.toggle--checkbox:checked~.toggle--label {
+    background: var(--indigo-color);
+    border-color: var(--indigo-border);
+}
+
+.toggle--label {
+    width: 200px;
+    height: 100px;
+    background: var(--blue-color);
+    border-radius: 100px;
+    border: 5px solid var(--blue-border);
+    display: flex;
+    position: relative;
+    transition: all 350ms ease-in;
+}
+
+.toggle--label-background {
+    width: 10px;
+    height: 5px;
+    border-radius: 5px;
+    position: relative;
+    background: var(--white);
+    left: 135px;
+    top: 45px;
+    transition: all 150ms ease-in;
+}
+
+.toggle--label-background:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    width: 40px;
+    height: 5px;
+    border-radius: 5px;
+    background: var(--white);
+    left: -20px;
+    transition: all 150ms ease-in;
+}
+
+.toggle--label-background:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    width: 40px;
+    height: 5px;
+    border-radius: 5px;
+    background: var(--white);
+    left: -10px;
+    transition: all 150ms ease-in;
+}
+
+.toggle--label:before {
+    animation-name: reverse;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+    transition: all 350ms ease-in;
+    content: "";
+    width: 82px;
+    height: 82px;
+    border: 5px solid var(--yellow-border);
+    top: 4px;
+    left: 4px;
+    position: absolute;
+    border-radius: 82px;
+    background: var(--yellow-background);
+}
+
+.toggle--label:after {
+    transition-delay: 0ms;
+    transition: all 250ms ease-in;
+    position: absolute;
+    content: "";
+    box-shadow: var(--gray-dots) -13px 0 0 2px, var(--gray-dots) -24px 14px 0 -2px;
+    left: 143px;
+    top: 23px;
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+/* Save Button */
+#saveSettings {
+    background-color: #ea481e;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+#saveSettings:hover {
+    background-color: #e04f31;
+}
